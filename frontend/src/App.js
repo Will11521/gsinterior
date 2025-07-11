@@ -445,7 +445,7 @@ const App = () => {
       <section id="contact" className="py-20 bg-primary-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className={`text-center mb-16 fade-in-section ${visibleSections.has('contact') ? 'is-visible' : ''}`}>
-            <h2 className="text-3xl md:text-5xl font-bold text-neutral-800 mb-4">Ready to Transform Your Home?</h2>
+            <h2 className="text-3xl md:text-5xl font-bold text-neutral-800 mb-4 section-title">Ready to Transform Your Home?</h2>
             <p className="text-xl text-neutral-600 max-w-2xl mx-auto">
               Get in touch with us today for a free consultation and quote.
             </p>
