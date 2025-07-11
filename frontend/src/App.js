@@ -256,7 +256,7 @@ const App = () => {
       <section id="why-choose" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className={`text-center mb-16 fade-in-section ${visibleSections.has('why-choose') ? 'is-visible' : ''}`}>
-            <h2 className="text-3xl md:text-5xl font-bold text-neutral-800 mb-4">Why Choose GS Interior?</h2>
+            <h2 className="text-3xl md:text-5xl font-bold text-neutral-800 mb-4 section-title">Why Choose GS Interior?</h2>
             <p className="text-xl text-neutral-600 max-w-2xl mx-auto">
               We bring years of expertise, premium materials, and unwavering commitment to every project.
             </p>
