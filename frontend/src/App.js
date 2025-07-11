@@ -235,7 +235,7 @@ const App = () => {
                 <div className="relative h-64 overflow-hidden">
                   <img 
                     src={service.image} 
-                    alt={`${service.title} services - Premium renovation by GS Interior`}
+                    alt={`${service.title} - ${service.title === 'Home Renovation' ? 'Active home renovation work in progress' : service.title === 'Interior Design' ? 'Elegant interior design services' : 'Beautiful polished finished basement'} by GS Interior`}
                     className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute top-4 left-4 w-16 h-16 bg-white/95 rounded-full flex items-center justify-center shadow-lg">
