@@ -167,11 +167,11 @@ const App = () => {
       <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1542081403278-ba5973c25c7a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzl8MHwxfHNlYXJjaHwyfHxkYXJrJTIwcmVub3ZhdGlvbnxlbnwwfHx8fDE3NTIyNTUwMDd8MA&ixlib=rb-4.1.0&q=85"
-            alt="Dark moody renovation space providing perfect contrast for text by GS Interior"
+            src="https://images.unsplash.com/photo-1698864551603-0f7aefaebeb4?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2MzV8MHwxfHNlYXJjaHwxfHxkYXJrJTIwaW50ZXJpb3J8ZW58MHx8fHwxNzUyMjU1Mjc5fDA&ixlib=rb-4.1.0&q=85"
+            alt="Elegant dark interior design with moody lighting providing perfect contrast for text by GS Interior"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-neutral-900/50 via-neutral-900/30 to-neutral-900/40"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-neutral-900/60 via-neutral-900/40 to-neutral-900/50"></div>
         </div>
         
         <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
