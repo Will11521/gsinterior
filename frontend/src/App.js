@@ -176,9 +176,9 @@ const App = () => {
         
         <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className={`${visibleSections.has('home') ? 'animate-fadeIn' : 'opacity-0'}`}>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-tight py-8">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-tight py-8 hero-title">
               Transform Your Home Into a 
-              <span className="text-accent-400 block">Luxury Haven</span>
+              <span className="text-accent-300 block gradient-text-hero">Luxury Haven</span>
             </h1>
             <p className="text-xl md:text-2xl text-white/90 mb-10 max-w-2xl mx-auto leading-relaxed">
               Expert renovation and interior design services that bring your dream home to life with premium craftsmanship and attention to detail.
