@@ -147,12 +147,12 @@ const App = () => {
               <h1 className="text-2xl font-bold text-accent-600">GS Interior</h1>
             </div>
             <div className="hidden md:flex space-x-8">
-              <button onClick={() => scrollToSection('home')} className="text-neutral-700 hover:text-accent-600 transition-colors">Home</button>
-              <button onClick={() => scrollToSection('services')} className="text-neutral-700 hover:text-accent-600 transition-colors">Services</button>
-              <button onClick={() => scrollToSection('why-choose')} className="text-neutral-700 hover:text-accent-600 transition-colors">Why Choose Us</button>
-              <button onClick={() => scrollToSection('gallery')} className="text-neutral-700 hover:text-accent-600 transition-colors">Gallery</button>
-              <button onClick={() => scrollToSection('testimonials')} className="text-neutral-700 hover:text-accent-600 transition-colors">Testimonials</button>
-              <button onClick={() => scrollToSection('contact')} className="text-neutral-700 hover:text-accent-600 transition-colors">Contact</button>
+              <button onClick={() => scrollToSection('home')} className="text-white/90 hover:text-accent-300 transition-colors font-medium">Home</button>
+              <button onClick={() => scrollToSection('services')} className="text-white/90 hover:text-accent-300 transition-colors font-medium">Services</button>
+              <button onClick={() => scrollToSection('why-choose')} className="text-white/90 hover:text-accent-300 transition-colors font-medium">Why Choose Us</button>
+              <button onClick={() => scrollToSection('gallery')} className="text-white/90 hover:text-accent-300 transition-colors font-medium">Gallery</button>
+              <button onClick={() => scrollToSection('testimonials')} className="text-white/90 hover:text-accent-300 transition-colors font-medium">Testimonials</button>
+              <button onClick={() => scrollToSection('contact')} className="text-white/90 hover:text-accent-300 transition-colors font-medium">Contact</button>
             </div>
             <div className="flex space-x-4">
               <button onClick={() => scrollToSection('contact')} className="btn-primary bg-accent-500 hover:bg-accent-600 text-white px-6 py-2 rounded-full text-sm font-semibold transition-all">
