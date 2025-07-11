@@ -92,22 +92,22 @@ const App = () => {
     setCurrentTestimonial(prev => (prev - 1 + testimonials.length) % testimonials.length);
   };
 
-  // Line Icons as SVG components
-  const HomeIcon = () => (
+  // Premium Gold-Accent Icons
+  const HomeRenovationIcon = () => (
     <svg className="w-12 h-12 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
     </svg>
   );
 
   const InteriorDesignIcon = () => (
     <svg className="w-12 h-12 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM7 3H5a2 2 0 00-2 2v12a4 4 0 004 4M9 7h8a2 2 0 012 2v8a2 2 0 01-2 2h-8M9 7V5a2 2 0 012-2h6a2 2 0 012 2v2M9 7v8a2 2 0 002 2h6a2 2 0 002-2V9"/>
     </svg>
   );
 
-  const BasementIcon = () => (
+  const ConstructionIcon = () => (
     <svg className="w-12 h-12 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
     </svg>
   );
 
@@ -168,7 +168,7 @@ const App = () => {
         <div className="absolute inset-0 z-0">
           <img 
             src="https://images.unsplash.com/photo-1653427602884-15ea63290719?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2Mzl8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBraXRjaGVufGVufDB8fHx3aGl0ZXwxNzUyMjQ3MDE5fDA&ixlib=rb-4.1.0&q=85"
-            alt="Modern kitchen renovation with white cabinets and natural light by GS Interior"
+            alt="Bright modern kitchen renovation with elegant white cabinets and natural lighting by GS Interior"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-neutral-900/30 via-neutral-900/15 to-transparent"></div>
@@ -176,7 +176,7 @@ const App = () => {
         
         <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className={`${visibleSections.has('home') ? 'animate-fadeIn' : 'opacity-0'}`}>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-tight py-6">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-tight py-8">
               Transform Your Home Into a 
               <span className="text-accent-400 block">Luxury Haven</span>
             </h1>
@@ -187,7 +187,7 @@ const App = () => {
               <button onClick={() => scrollToSection('contact')} className="btn-primary bg-accent-500 hover:bg-accent-600 text-white px-10 py-5 rounded-full text-lg font-semibold transform hover:scale-105 transition-all shadow-warm">
                 Get Free Quote
               </button>
-              <button onClick={openWhatsApp} className="glass-card text-white px-10 py-5 rounded-full text-lg font-semibold hover:scale-105 transition-all flex items-center gap-2">
+              <button onClick={openWhatsApp} className="whatsapp-button bg-green-500 hover:bg-green-600 text-white px-10 py-5 rounded-full text-lg font-semibold hover:scale-105 transition-all flex items-center gap-2 shadow-lg">
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.097"/>
                 </svg>
@@ -214,7 +214,7 @@ const App = () => {
                 title: "Home Renovation",
                 description: "Complete home makeovers with modern design and premium finishes that transform your living space.",
                 image: "https://images.pexels.com/photos/3434997/pexels-photo-3434997.jpeg",
-                icon: <HomeIcon />
+                icon: <HomeRenovationIcon />
               },
               {
                 title: "Interior Design",
@@ -226,7 +226,7 @@ const App = () => {
                 title: "Basement Finishing",
                 description: "Transform your basement into a luxurious living space with professional finishing and design.",
                 image: "https://images.pexels.com/photos/7078360/pexels-photo-7078360.jpeg",
-                icon: <BasementIcon />
+                icon: <ConstructionIcon />
               }
             ].map((service, index) => (
               <div key={index} className={`glass-card rounded-2xl overflow-hidden hover-lift fade-in-section ${
@@ -235,10 +235,10 @@ const App = () => {
                 <div className="relative h-64 overflow-hidden">
                   <img 
                     src={service.image} 
-                    alt={`${service.title} - Premium renovation services by GS Interior`}
+                    alt={`${service.title} services - Premium renovation by GS Interior`}
                     className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
                   />
-                  <div className="absolute top-4 left-4 w-16 h-16 bg-white/90 rounded-full flex items-center justify-center">
+                  <div className="absolute top-4 left-4 w-16 h-16 bg-white/95 rounded-full flex items-center justify-center shadow-lg">
                     {service.icon}
                   </div>
                 </div>
@@ -299,7 +299,7 @@ const App = () => {
         </div>
       </section>
 
-      {/* Gallery Section */}
+      {/* Gallery Section - CORRECTED BEFORE/AFTER IMAGES */}
       <section id="gallery" className="py-20 bg-primary-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className={`text-center mb-16 fade-in-section ${visibleSections.has('gallery') ? 'is-visible' : ''}`}>
@@ -312,25 +312,25 @@ const App = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                before: "https://images.unsplash.com/photo-1576325782614-1df4c30918e0?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzh8MHwxfHNlYXJjaHwxfHxvbGQlMjBraXRjaGVuJTIwcmVub3ZhdGlvbnxlbnwwfHx8fDE3NTIyNDcwMjZ8MA&ixlib=rb-4.1.0&q=85",
-                after: "https://images.unsplash.com/photo-1633505899118-4ca6bd143043?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NjZ8MHwxfHNlYXJjaHwzfHxsaXZpbmclMjByb29tJTIwcmVub3ZhdGlvbnxlbnwwfHx8d2hpdGV8MTc1MjI0NTkyNnww&ixlib=rb-4.1.0&q=85",
-                title: "Kitchen Transformation",
-                beforeAlt: "Outdated Victorian kitchen before renovation by GS Interior",
-                afterAlt: "Modern elegant kitchen after renovation by GS Interior"
+                before: "https://images.unsplash.com/photo-1554585371-9ed98c579632?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2MzR8MHwxfHNlYXJjaHwyfHxkYW1hZ2VkJTIwa2l0Y2hlbnxlbnwwfHx8fDE3NTIyNDkwMjl8MA&ixlib=rb-4.1.0&q=85",
+                after: "https://images.unsplash.com/photo-1556595101-15dc5f6431e3?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2MzR8MHwxfHNlYXJjaHwxfHxraXRjaGVuJTIwcmVub3ZhdGlvbnxlbnwwfHx8fDE3NTIyNDkwMjN8MA&ixlib=rb-4.1.0&q=85",
+                title: "Kitchen Renovation",
+                beforeAlt: "Outdated kitchen with old brown cabinets before renovation by GS Interior",
+                afterAlt: "Modern bright kitchen with white cabinets and bar seating after renovation by GS Interior"
               },
               {
-                before: "https://images.unsplash.com/photo-1634586657092-438d8f1560ae?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDF8MHwxfHNlYXJjaHwxfHx1bmZpbmlzaGVkJTIwcmVub3ZhdGlvbnxlbnwwfHx8fDE3NTIyNDcwMzJ8MA&ixlib=rb-4.1.0&q=85",
-                after: "https://images.unsplash.com/photo-1556597249-cd6a997737df?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NjZ8MHwxfHNlYXJjaHwxfHxsaXZpbmclMjByb29tJTIwcmVub3ZhdGlvbnxlbnwwfHx8d2hpdGV8MTc1MjI0NTkyNnww&ixlib=rb-4.1.0&q=85",
-                title: "Living Room Renovation",
-                beforeAlt: "Damaged wall with hole before renovation by GS Interior",
-                afterAlt: "Beautiful modern living room after renovation by GS Interior"
+                before: "https://images.unsplash.com/photo-1657213077302-79e89564a042?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2MzR8MHwxfHNlYXJjaHwxfHxkYW1hZ2VkJTIwa2l0Y2hlbnxlbnwwfHx8fDE3NTIyNDkwMjl8MA&ixlib=rb-4.1.0&q=85",
+                after: "https://images.unsplash.com/photo-1579725942955-4d8377f8c66a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2MzR8MHwxfHNlYXJjaHwzfHxraXRjaGVuJTIwcmVub3ZhdGlvbnxlbnwwfHx8fDE3NTIyNDkwMjN8MA&ixlib=rb-4.1.0&q=85",
+                title: "Home Renovation",
+                beforeAlt: "Severely damaged room with peeling walls and deteriorated conditions before renovation by GS Interior",
+                afterAlt: "Luxury modern kitchen with wine storage and bright lighting after renovation by GS Interior"
               },
               {
-                before: "https://images.unsplash.com/photo-1683902020604-41a2b59af736?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDF8MHwxfHNlYXJjaHwyfHx1bmZpbmlzaGVkJTIwcmVub3ZhdGlvbnxlbnwwfHx8fDE3NTIyNDcwMzJ8MA&ixlib=rb-4.1.0&q=85",
-                after: "https://images.unsplash.com/photo-1616425290134-290421a0cd97?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzh8MHwxfHNlYXJjaHwyfHxsdXh1cnklMjBraXRjaGVufGVufDB8fHx3aGl0ZXwxNzUyMjQ1OTE5fDA&ixlib=rb-4.1.0&q=85",
-                title: "Basement Finishing",
-                beforeAlt: "Unfinished room with ladder before renovation by GS Interior",
-                afterAlt: "Luxurious finished basement space after renovation by GS Interior"
+                before: "https://images.unsplash.com/photo-1600331574095-4a20d3d8dd77?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2MzR8MHwxfHNlYXJjaHwzfHxkYW1hZ2VkJTIwa2l0Y2hlbnxlbnwwfHx8fDE3NTIyNDkwMjl8MA&ixlib=rb-4.1.0&q=85",
+                after: "https://images.unsplash.com/photo-1611066415941-3262d8033fa9?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2MzR8MHwxfHNlYXJjaHwyfHxraXRjaGVuJTIwcmVub3ZhdGlvbnxlbnwwfHx8fDE3NTIyNDkwMjN8MA&ixlib=rb-4.1.0&q=85",
+                title: "Interior Design",
+                beforeAlt: "Abandoned kitchen with extensive peeling paint and damaged walls before renovation by GS Interior",
+                afterAlt: "Elegant modern kitchen with stainless steel countertops after renovation by GS Interior"
               }
             ].map((item, index) => (
               <div key={index} className={`glass-card rounded-2xl overflow-hidden hover-lift fade-in-section ${
@@ -340,19 +340,20 @@ const App = () => {
                   <div className="grid grid-cols-2 h-48">
                     <div className="relative overflow-hidden">
                       <img src={item.before} alt={item.beforeAlt} className="w-full h-full object-cover" />
-                      <div className="absolute bottom-2 left-2 bg-red-500 text-white px-2 py-1 rounded text-xs font-semibold">
+                      <div className="absolute bottom-2 left-2 bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold">
                         BEFORE
                       </div>
                     </div>
                     <div className="relative overflow-hidden">
                       <img src={item.after} alt={item.afterAlt} className="w-full h-full object-cover" />
-                      <div className="absolute bottom-2 right-2 bg-green-500 text-white px-2 py-1 rounded text-xs font-semibold">
+                      <div className="absolute bottom-2 right-2 bg-green-500 text-white px-3 py-1 rounded-full text-xs font-bold">
                         AFTER
                       </div>
                     </div>
                   </div>
-                  <div className="p-4">
-                    <h3 className="text-lg font-semibold text-neutral-800">{item.title}</h3>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-neutral-800 mb-2">{item.title}</h3>
+                    <p className="text-neutral-600 text-sm">Professional transformation by GS Interior</p>
                   </div>
                 </div>
               </div>
@@ -559,7 +560,7 @@ const App = () => {
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
                       </svg>
                       <span className="text-neutral-700">15+ Years Experience</span>
-                    </li>
+                    </div>
                     <li className="flex items-center">
                       <svg className="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
