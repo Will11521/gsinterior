@@ -180,7 +180,7 @@ const App = () => {
               Transform Your Home Into a 
               <span className="text-accent-300 block gradient-text-hero">Luxury Haven</span>
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 mb-10 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-xl md:text-2xl text-white/95 mb-10 max-w-2xl mx-auto leading-relaxed font-light">
               Expert renovation and interior design services that bring your dream home to life with premium craftsmanship and attention to detail.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
