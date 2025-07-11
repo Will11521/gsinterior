@@ -213,7 +213,7 @@ const App = () => {
               {
                 title: "Home Renovation",
                 description: "Complete home makeovers with modern design and premium finishes that transform your living space.",
-                image: "https://images.pexels.com/photos/3434997/pexels-photo-3434997.jpeg",
+                image: "https://images.unsplash.com/photo-1517581177682-a085bb7ffb15?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzF8MHwxfHNlYXJjaHwzfHxob21lJTIwcmVub3ZhdGlvbnxlbnwwfHx8fDE3NTIyNTA3MDR8MA&ixlib=rb-4.1.0&q=85",
                 icon: <HomeRenovationIcon />
               },
               {
@@ -225,7 +225,7 @@ const App = () => {
               {
                 title: "Basement Finishing",
                 description: "Transform your basement into a luxurious living space with professional finishing and design.",
-                image: "https://images.pexels.com/photos/7078360/pexels-photo-7078360.jpeg",
+                image: "https://images.unsplash.com/photo-1646592491963-07ff7e7c31f7?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2MzR8MHwxfHNlYXJjaHwxfHxmaW5pc2hlZCUyMGJhc2VtZW50fGVufDB8fHx8MTc1MjI1MDcxMXww&ixlib=rb-4.1.0&q=85",
                 icon: <ConstructionIcon />
               }
             ].map((service, index) => (
