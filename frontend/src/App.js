@@ -144,7 +144,7 @@ const App = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <h1 className="text-2xl font-bold text-accent-600">GS Interior</h1>
+              <h1 className="text-accent-600">GS Interior</h1>
             </div>
             <div className="hidden md:flex space-x-8">
               <button onClick={() => scrollToSection('home')} className="text-white/90 hover:text-accent-300 transition-colors font-medium">Home</button>
