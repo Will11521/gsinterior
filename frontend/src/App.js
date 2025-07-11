@@ -4,6 +4,7 @@ import "./App.css";
 const App = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [visibleSections, setVisibleSections] = useState(new Set());
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,6 +34,14 @@ const App = () => {
     return () => observer.disconnect();
   }, []);
 
+  // Testimonial carousel
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTestimonial(prev => (prev + 1) % testimonials.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -43,6 +52,88 @@ const App = () => {
   const openWhatsApp = () => {
     window.open('https://wa.me/1234567890?text=Hi! I would like to get a quote for home renovation.', '_blank');
   };
+
+  const testimonials = [
+    {
+      name: "Sarah Johnson",
+      role: "Homeowner",
+      text: "GS Interior completely transformed our kitchen into a modern masterpiece. The attention to detail and quality of work exceeded our expectations.",
+      rating: 5,
+      image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face"
+    },
+    {
+      name: "Michael Chen",
+      role: "Property Owner",
+      text: "Professional, reliable, and incredibly skilled. They turned our basement into a beautiful living space that we absolutely love.",
+      rating: 5,
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face"
+    },
+    {
+      name: "Emily Rodriguez",
+      role: "Interior Design Client",
+      text: "The team at GS Interior has an amazing eye for design. They created a space that perfectly reflects our family's style and needs.",
+      rating: 5,
+      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face"
+    },
+    {
+      name: "David Thompson",
+      role: "Renovation Client",
+      text: "From start to finish, GS Interior delivered excellence. Our home renovation was completed on time and within budget.",
+      rating: 5,
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face"
+    }
+  ];
+
+  const nextTestimonial = () => {
+    setCurrentTestimonial(prev => (prev + 1) % testimonials.length);
+  };
+
+  const prevTestimonial = () => {
+    setCurrentTestimonial(prev => (prev - 1 + testimonials.length) % testimonials.length);
+  };
+
+  // Line Icons as SVG components
+  const HomeIcon = () => (
+    <svg className="w-12 h-12 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+    </svg>
+  );
+
+  const InteriorDesignIcon = () => (
+    <svg className="w-12 h-12 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+    </svg>
+  );
+
+  const BasementIcon = () => (
+    <svg className="w-12 h-12 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+    </svg>
+  );
+
+  const ShieldIcon = () => (
+    <svg className="w-8 h-8 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+    </svg>
+  );
+
+  const ExperienceIcon = () => (
+    <svg className="w-8 h-8 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+    </svg>
+  );
+
+  const MaterialIcon = () => (
+    <svg className="w-8 h-8 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+    </svg>
+  );
+
+  const ConsultationIcon = () => (
+    <svg className="w-8 h-8 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+    </svg>
+  );
 
   return (
     <div className="App">
@@ -58,6 +149,7 @@ const App = () => {
             <div className="hidden md:flex space-x-8">
               <button onClick={() => scrollToSection('home')} className="text-neutral-700 hover:text-accent-600 transition-colors">Home</button>
               <button onClick={() => scrollToSection('services')} className="text-neutral-700 hover:text-accent-600 transition-colors">Services</button>
+              <button onClick={() => scrollToSection('why-choose')} className="text-neutral-700 hover:text-accent-600 transition-colors">Why Choose Us</button>
               <button onClick={() => scrollToSection('gallery')} className="text-neutral-700 hover:text-accent-600 transition-colors">Gallery</button>
               <button onClick={() => scrollToSection('testimonials')} className="text-neutral-700 hover:text-accent-600 transition-colors">Testimonials</button>
               <button onClick={() => scrollToSection('contact')} className="text-neutral-700 hover:text-accent-600 transition-colors">Contact</button>
@@ -75,27 +167,27 @@ const App = () => {
       <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1616425290134-290421a0cd97?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzh8MHwxfHNlYXJjaHwyfHxsdXh1cnklMjBraXRjaGVufGVufDB8fHx3aGl0ZXwxNzUyMjQ1OTE5fDA&ixlib=rb-4.1.0&q=85"
-            alt="Luxury kitchen renovation"
+            src="https://images.unsplash.com/photo-1653427602884-15ea63290719?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2Mzl8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBraXRjaGVufGVufDB8fHx3aGl0ZXwxNzUyMjQ3MDE5fDA&ixlib=rb-4.1.0&q=85"
+            alt="Modern kitchen renovation with white cabinets and natural light by GS Interior"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-neutral-900/40 via-neutral-900/20 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-neutral-900/30 via-neutral-900/15 to-transparent"></div>
         </div>
         
         <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className={`${visibleSections.has('home') ? 'animate-fadeIn' : 'opacity-0'}`}>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-tight py-6">
               Transform Your Home Into a 
               <span className="text-accent-400 block">Luxury Haven</span>
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-xl md:text-2xl text-white/90 mb-10 max-w-2xl mx-auto leading-relaxed">
               Expert renovation and interior design services that bring your dream home to life with premium craftsmanship and attention to detail.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <button onClick={() => scrollToSection('contact')} className="btn-primary bg-accent-500 hover:bg-accent-600 text-white px-8 py-4 rounded-full text-lg font-semibold transform hover:scale-105 transition-all shadow-warm">
+              <button onClick={() => scrollToSection('contact')} className="btn-primary bg-accent-500 hover:bg-accent-600 text-white px-10 py-5 rounded-full text-lg font-semibold transform hover:scale-105 transition-all shadow-warm">
                 Get Free Quote
               </button>
-              <button onClick={openWhatsApp} className="glass-card text-white px-8 py-4 rounded-full text-lg font-semibold hover:scale-105 transition-all flex items-center gap-2">
+              <button onClick={openWhatsApp} className="glass-card text-white px-10 py-5 rounded-full text-lg font-semibold hover:scale-105 transition-all flex items-center gap-2">
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.097"/>
                 </svg>
@@ -109,7 +201,7 @@ const App = () => {
       {/* Services Section */}
       <section id="services" className="py-20 bg-primary-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className={`text-center mb-16 ${visibleSections.has('services') ? 'animate-slideUp' : 'opacity-0'}`}>
+          <div className={`text-center mb-16 fade-in-section ${visibleSections.has('services') ? 'is-visible' : ''}`}>
             <h2 className="text-3xl md:text-5xl font-bold text-neutral-800 mb-4">Our Premium Services</h2>
             <p className="text-xl text-neutral-600 max-w-2xl mx-auto">
               From concept to completion, we deliver exceptional results that exceed your expectations.
@@ -122,31 +214,31 @@ const App = () => {
                 title: "Home Renovation",
                 description: "Complete home makeovers with modern design and premium finishes that transform your living space.",
                 image: "https://images.pexels.com/photos/3434997/pexels-photo-3434997.jpeg",
-                icon: "🏠"
+                icon: <HomeIcon />
               },
               {
                 title: "Interior Design",
                 description: "Sophisticated interior design services that create beautiful, functional spaces tailored to your lifestyle.",
                 image: "https://images.unsplash.com/photo-1708704974484-3ca56db9384f?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NjZ8MHwxfHNlYXJjaHwyfHxsaXZpbmclMjByb29tJTIwcmVub3ZhdGlvbnxlbnwwfHx8d2hpdGV8MTc1MjI0NTkyNnww&ixlib=rb-4.1.0&q=85",
-                icon: "🎨"
+                icon: <InteriorDesignIcon />
               },
               {
                 title: "Basement Finishing",
                 description: "Transform your basement into a luxurious living space with professional finishing and design.",
                 image: "https://images.pexels.com/photos/7078360/pexels-photo-7078360.jpeg",
-                icon: "🏗️"
+                icon: <BasementIcon />
               }
             ].map((service, index) => (
-              <div key={index} className={`glass-card rounded-2xl overflow-hidden hover-lift ${
-                visibleSections.has('services') ? 'animate-slideUp' : 'opacity-0'
+              <div key={index} className={`glass-card rounded-2xl overflow-hidden hover-lift fade-in-section ${
+                visibleSections.has('services') ? 'is-visible' : ''
               }`} style={{ animationDelay: `${index * 0.2}s` }}>
                 <div className="relative h-64 overflow-hidden">
                   <img 
                     src={service.image} 
-                    alt={service.title}
+                    alt={`${service.title} - Premium renovation services by GS Interior`}
                     className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
                   />
-                  <div className="absolute top-4 left-4 w-12 h-12 bg-white/90 rounded-full flex items-center justify-center text-2xl">
+                  <div className="absolute top-4 left-4 w-16 h-16 bg-white/90 rounded-full flex items-center justify-center">
                     {service.icon}
                   </div>
                 </div>
@@ -160,10 +252,57 @@ const App = () => {
         </div>
       </section>
 
-      {/* Gallery Section */}
-      <section id="gallery" className="py-20 bg-white">
+      {/* Why Choose Us Section */}
+      <section id="why-choose" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className={`text-center mb-16 ${visibleSections.has('gallery') ? 'animate-slideUp' : 'opacity-0'}`}>
+          <div className={`text-center mb-16 fade-in-section ${visibleSections.has('why-choose') ? 'is-visible' : ''}`}>
+            <h2 className="text-3xl md:text-5xl font-bold text-neutral-800 mb-4">Why Choose GS Interior?</h2>
+            <p className="text-xl text-neutral-600 max-w-2xl mx-auto">
+              We bring years of expertise, premium materials, and unwavering commitment to every project.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                title: "Licensed & Insured",
+                description: "Full licensing and comprehensive insurance coverage for your peace of mind.",
+                icon: <ShieldIcon />
+              },
+              {
+                title: "15+ Years Experience",
+                description: "Over a decade of successful renovations and satisfied customers.",
+                icon: <ExperienceIcon />
+              },
+              {
+                title: "Premium Materials",
+                description: "Only the finest materials and finishes for lasting beauty and durability.",
+                icon: <MaterialIcon />
+              },
+              {
+                title: "Free Consultations",
+                description: "Complimentary design consultations to bring your vision to life.",
+                icon: <ConsultationIcon />
+              }
+            ].map((feature, index) => (
+              <div key={index} className={`glass-card rounded-2xl p-6 text-center hover-lift fade-in-section ${
+                visibleSections.has('why-choose') ? 'is-visible' : ''
+              }`} style={{ animationDelay: `${index * 0.15}s` }}>
+                <div className="flex justify-center mb-4">
+                  {feature.icon}
+                </div>
+                <h3 className="text-xl font-bold text-neutral-800 mb-3">{feature.title}</h3>
+                <p className="text-neutral-600 leading-relaxed">{feature.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Gallery Section */}
+      <section id="gallery" className="py-20 bg-primary-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className={`text-center mb-16 fade-in-section ${visibleSections.has('gallery') ? 'is-visible' : ''}`}>
             <h2 className="text-3xl md:text-5xl font-bold text-neutral-800 mb-4">Before & After Gallery</h2>
             <p className="text-xl text-neutral-600 max-w-2xl mx-auto">
               See the incredible transformations we've created for our clients.
@@ -173,34 +312,40 @@ const App = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                before: "https://images.pexels.com/photos/8469943/pexels-photo-8469943.jpeg",
+                before: "https://images.unsplash.com/photo-1576325782614-1df4c30918e0?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzh8MHwxfHNlYXJjaHwxfHxvbGQlMjBraXRjaGVuJTIwcmVub3ZhdGlvbnxlbnwwfHx8fDE3NTIyNDcwMjZ8MA&ixlib=rb-4.1.0&q=85",
                 after: "https://images.unsplash.com/photo-1633505899118-4ca6bd143043?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NjZ8MHwxfHNlYXJjaHwzfHxsaXZpbmclMjByb29tJTIwcmVub3ZhdGlvbnxlbnwwfHx8d2hpdGV8MTc1MjI0NTkyNnww&ixlib=rb-4.1.0&q=85",
-                title: "Living Room Transformation"
+                title: "Kitchen Transformation",
+                beforeAlt: "Outdated Victorian kitchen before renovation by GS Interior",
+                afterAlt: "Modern elegant kitchen after renovation by GS Interior"
               },
               {
-                before: "https://images.pexels.com/photos/2123430/pexels-photo-2123430.jpeg",
+                before: "https://images.unsplash.com/photo-1634586657092-438d8f1560ae?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDF8MHwxfHNlYXJjaHwxfHx1bmZpbmlzaGVkJTIwcmVub3ZhdGlvbnxlbnwwfHx8fDE3NTIyNDcwMzJ8MA&ixlib=rb-4.1.0&q=85",
                 after: "https://images.unsplash.com/photo-1556597249-cd6a997737df?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NjZ8MHwxfHNlYXJjaHwxfHxsaXZpbmclMjByb29tJTIwcmVub3ZhdGlvbnxlbnwwfHx8d2hpdGV8MTc1MjI0NTkyNnww&ixlib=rb-4.1.0&q=85",
-                title: "Kitchen Renovation"
+                title: "Living Room Renovation",
+                beforeAlt: "Damaged wall with hole before renovation by GS Interior",
+                afterAlt: "Beautiful modern living room after renovation by GS Interior"
               },
               {
-                before: "https://images.pexels.com/photos/6800789/pexels-photo-6800789.jpeg",
+                before: "https://images.unsplash.com/photo-1683902020604-41a2b59af736?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDF8MHwxfHNlYXJjaHwyfHx1bmZpbmlzaGVkJTIwcmVub3ZhdGlvbnxlbnwwfHx8fDE3NTIyNDcwMzJ8MA&ixlib=rb-4.1.0&q=85",
                 after: "https://images.unsplash.com/photo-1616425290134-290421a0cd97?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzh8MHwxfHNlYXJjaHwyfHxsdXh1cnklMjBraXRjaGVufGVufDB8fHx3aGl0ZXwxNzUyMjQ1OTE5fDA&ixlib=rb-4.1.0&q=85",
-                title: "Basement Finishing"
+                title: "Basement Finishing",
+                beforeAlt: "Unfinished room with ladder before renovation by GS Interior",
+                afterAlt: "Luxurious finished basement space after renovation by GS Interior"
               }
             ].map((item, index) => (
-              <div key={index} className={`glass-card rounded-2xl overflow-hidden hover-lift ${
-                visibleSections.has('gallery') ? 'animate-slideUp' : 'opacity-0'
+              <div key={index} className={`glass-card rounded-2xl overflow-hidden hover-lift fade-in-section ${
+                visibleSections.has('gallery') ? 'is-visible' : ''
               }`} style={{ animationDelay: `${index * 0.2}s` }}>
                 <div className="relative">
                   <div className="grid grid-cols-2 h-48">
                     <div className="relative overflow-hidden">
-                      <img src={item.before} alt="Before" className="w-full h-full object-cover" />
+                      <img src={item.before} alt={item.beforeAlt} className="w-full h-full object-cover" />
                       <div className="absolute bottom-2 left-2 bg-red-500 text-white px-2 py-1 rounded text-xs font-semibold">
                         BEFORE
                       </div>
                     </div>
                     <div className="relative overflow-hidden">
-                      <img src={item.after} alt="After" className="w-full h-full object-cover" />
+                      <img src={item.after} alt={item.afterAlt} className="w-full h-full object-cover" />
                       <div className="absolute bottom-2 right-2 bg-green-500 text-white px-2 py-1 rounded text-xs font-semibold">
                         AFTER
                       </div>
@@ -216,72 +361,89 @@ const App = () => {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section id="testimonials" className="py-20 bg-primary-100">
+      {/* Testimonials Section with Carousel */}
+      <section id="testimonials" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className={`text-center mb-16 ${visibleSections.has('testimonials') ? 'animate-slideUp' : 'opacity-0'}`}>
+          <div className={`text-center mb-16 fade-in-section ${visibleSections.has('testimonials') ? 'is-visible' : ''}`}>
             <h2 className="text-3xl md:text-5xl font-bold text-neutral-800 mb-4">What Our Clients Say</h2>
             <p className="text-xl text-neutral-600 max-w-2xl mx-auto">
               Hear from satisfied homeowners who trusted us with their dream renovations.
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                name: "Sarah Johnson",
-                role: "Homeowner",
-                text: "GS Interior completely transformed our kitchen into a modern masterpiece. The attention to detail and quality of work exceeded our expectations.",
-                rating: 5,
-                image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face"
-              },
-              {
-                name: "Michael Chen",
-                role: "Property Owner",
-                text: "Professional, reliable, and incredibly skilled. They turned our basement into a beautiful living space that we absolutely love.",
-                rating: 5,
-                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face"
-              },
-              {
-                name: "Emily Rodriguez",
-                role: "Interior Design Client",
-                text: "The team at GS Interior has an amazing eye for design. They created a space that perfectly reflects our family's style and needs.",
-                rating: 5,
-                image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face"
-              }
-            ].map((testimonial, index) => (
-              <div key={index} className={`glass-card rounded-2xl p-6 hover-lift ${
-                visibleSections.has('testimonials') ? 'animate-slideUp' : 'opacity-0'
-              }`} style={{ animationDelay: `${index * 0.2}s` }}>
-                <div className="flex items-center mb-4">
-                  <img 
-                    src={testimonial.image} 
-                    alt={testimonial.name}
-                    className="w-12 h-12 rounded-full mr-4"
-                  />
-                  <div>
-                    <h4 className="font-semibold text-neutral-800">{testimonial.name}</h4>
-                    <p className="text-sm text-neutral-600">{testimonial.role}</p>
+          <div className="relative max-w-4xl mx-auto">
+            <div className="overflow-hidden">
+              <div className="flex transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${currentTestimonial * 100}%)` }}>
+                {testimonials.map((testimonial, index) => (
+                  <div key={index} className="w-full flex-shrink-0 px-4">
+                    <div className={`glass-card rounded-2xl p-8 text-center fade-in-section ${
+                      visibleSections.has('testimonials') ? 'is-visible' : ''
+                    }`}>
+                      <div className="flex justify-center mb-6">
+                        <img 
+                          src={testimonial.image} 
+                          alt={`${testimonial.name} - Satisfied GS Interior renovation client`}
+                          className="w-20 h-20 rounded-full"
+                        />
+                      </div>
+                      <div className="flex justify-center mb-4">
+                        {[...Array(testimonial.rating)].map((_, i) => (
+                          <svg key={i} className="w-6 h-6 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                          </svg>
+                        ))}
+                      </div>
+                      <p className="text-lg text-neutral-700 italic mb-6">"{testimonial.text}"</p>
+                      <div>
+                        <h4 className="text-xl font-semibold text-neutral-800">{testimonial.name}</h4>
+                        <p className="text-neutral-600">{testimonial.role}</p>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div className="flex mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <svg key={i} className="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                    </svg>
-                  ))}
-                </div>
-                <p className="text-neutral-700 italic">"{testimonial.text}"</p>
+                ))}
               </div>
-            ))}
+            </div>
+            
+            {/* Carousel Controls */}
+            <div className="flex justify-center items-center mt-8 space-x-4">
+              <button
+                onClick={prevTestimonial}
+                className="glass-card p-3 rounded-full hover:bg-accent-100 transition-colors"
+              >
+                <svg className="w-6 h-6 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"/>
+                </svg>
+              </button>
+              
+              <div className="flex space-x-2">
+                {testimonials.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentTestimonial(index)}
+                    className={`w-3 h-3 rounded-full transition-colors ${
+                      index === currentTestimonial ? 'bg-accent-500' : 'bg-neutral-300'
+                    }`}
+                  />
+                ))}
+              </div>
+              
+              <button
+                onClick={nextTestimonial}
+                className="glass-card p-3 rounded-full hover:bg-accent-100 transition-colors"
+              >
+                <svg className="w-6 h-6 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-white">
+      <section id="contact" className="py-20 bg-primary-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className={`text-center mb-16 ${visibleSections.has('contact') ? 'animate-slideUp' : 'opacity-0'}`}>
+          <div className={`text-center mb-16 fade-in-section ${visibleSections.has('contact') ? 'is-visible' : ''}`}>
             <h2 className="text-3xl md:text-5xl font-bold text-neutral-800 mb-4">Ready to Transform Your Home?</h2>
             <p className="text-xl text-neutral-600 max-w-2xl mx-auto">
               Get in touch with us today for a free consultation and quote.
@@ -289,7 +451,7 @@ const App = () => {
           </div>
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <div className={`${visibleSections.has('contact') ? 'animate-slideInLeft' : 'opacity-0'}`}>
+            <div className={`fade-in-section ${visibleSections.has('contact') ? 'is-visible' : ''}`}>
               <div className="glass-card rounded-2xl p-8">
                 <h3 className="text-2xl font-bold text-neutral-800 mb-6">Get Your Free Quote</h3>
                 <form className="space-y-6">
@@ -297,25 +459,25 @@ const App = () => {
                     <input
                       type="text"
                       placeholder="First Name"
-                      className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-transparent"
+                      className="w-full px-4 py-4 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-transparent text-base"
                     />
                     <input
                       type="text"
                       placeholder="Last Name"
-                      className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-transparent"
+                      className="w-full px-4 py-4 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-transparent text-base"
                     />
                   </div>
                   <input
                     type="email"
                     placeholder="Email Address"
-                    className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-transparent"
+                    className="w-full px-4 py-4 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-transparent text-base"
                   />
                   <input
                     type="tel"
                     placeholder="Phone Number"
-                    className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-transparent"
+                    className="w-full px-4 py-4 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-transparent text-base"
                   />
-                  <select className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-transparent">
+                  <select className="w-full px-4 py-4 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-transparent text-base">
                     <option>Select Service</option>
                     <option>Home Renovation</option>
                     <option>Interior Design</option>
@@ -326,11 +488,11 @@ const App = () => {
                   <textarea
                     placeholder="Tell us about your project..."
                     rows="4"
-                    className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-transparent"
+                    className="w-full px-4 py-4 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-transparent text-base"
                   ></textarea>
                   <button
                     type="submit"
-                    className="w-full btn-primary bg-accent-500 hover:bg-accent-600 text-white px-8 py-4 rounded-lg text-lg font-semibold transform hover:scale-105 transition-all shadow-warm"
+                    className="w-full btn-primary bg-accent-500 hover:bg-accent-600 text-white px-8 py-5 rounded-lg text-lg font-semibold transform hover:scale-105 transition-all shadow-warm"
                   >
                     Get Free Quote
                   </button>
@@ -338,7 +500,7 @@ const App = () => {
               </div>
             </div>
             
-            <div className={`${visibleSections.has('contact') ? 'animate-slideInRight' : 'opacity-0'}`}>
+            <div className={`fade-in-section ${visibleSections.has('contact') ? 'is-visible' : ''}`}>
               <div className="space-y-8">
                 <div className="glass-card rounded-2xl p-6">
                   <h3 className="text-xl font-bold text-neutral-800 mb-4">Contact Information</h3>
@@ -419,26 +581,26 @@ const App = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-neutral-800 text-white py-16">
+      <footer className="bg-primary-200 text-neutral-800 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
-              <h3 className="text-2xl font-bold text-accent-400 mb-4">GS Interior</h3>
-              <p className="text-neutral-300 mb-4">
+              <h3 className="text-2xl font-bold text-accent-600 mb-4">GS Interior</h3>
+              <p className="text-neutral-600 mb-4">
                 Transforming homes with premium renovation and interior design services.
               </p>
               <div className="flex space-x-4">
-                <a href="#" className="text-neutral-400 hover:text-accent-400 transition-colors">
+                <a href="#" className="text-neutral-500 hover:text-accent-600 transition-colors">
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
                   </svg>
                 </a>
-                <a href="#" className="text-neutral-400 hover:text-accent-400 transition-colors">
+                <a href="#" className="text-neutral-500 hover:text-accent-600 transition-colors">
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
                   </svg>
                 </a>
-                <a href="#" className="text-neutral-400 hover:text-accent-400 transition-colors">
+                <a href="#" className="text-neutral-500 hover:text-accent-600 transition-colors">
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.347-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001.012.001z"/>
                   </svg>
@@ -449,38 +611,38 @@ const App = () => {
             <div>
               <h4 className="text-lg font-semibold mb-4">Services</h4>
               <ul className="space-y-2">
-                <li><a href="#" className="text-neutral-300 hover:text-accent-400 transition-colors">Home Renovation</a></li>
-                <li><a href="#" className="text-neutral-300 hover:text-accent-400 transition-colors">Interior Design</a></li>
-                <li><a href="#" className="text-neutral-300 hover:text-accent-400 transition-colors">Basement Finishing</a></li>
-                <li><a href="#" className="text-neutral-300 hover:text-accent-400 transition-colors">Kitchen Renovation</a></li>
-                <li><a href="#" className="text-neutral-300 hover:text-accent-400 transition-colors">Bathroom Renovation</a></li>
+                <li><a href="#" className="text-neutral-600 hover:text-accent-600 transition-colors">Home Renovation</a></li>
+                <li><a href="#" className="text-neutral-600 hover:text-accent-600 transition-colors">Interior Design</a></li>
+                <li><a href="#" className="text-neutral-600 hover:text-accent-600 transition-colors">Basement Finishing</a></li>
+                <li><a href="#" className="text-neutral-600 hover:text-accent-600 transition-colors">Kitchen Renovation</a></li>
+                <li><a href="#" className="text-neutral-600 hover:text-accent-600 transition-colors">Bathroom Renovation</a></li>
               </ul>
             </div>
             
             <div>
               <h4 className="text-lg font-semibold mb-4">Company</h4>
               <ul className="space-y-2">
-                <li><a href="#" className="text-neutral-300 hover:text-accent-400 transition-colors">About Us</a></li>
-                <li><a href="#" className="text-neutral-300 hover:text-accent-400 transition-colors">Our Team</a></li>
-                <li><a href="#" className="text-neutral-300 hover:text-accent-400 transition-colors">Careers</a></li>
-                <li><a href="#" className="text-neutral-300 hover:text-accent-400 transition-colors">Blog</a></li>
-                <li><a href="#" className="text-neutral-300 hover:text-accent-400 transition-colors">Contact</a></li>
+                <li><a href="#" className="text-neutral-600 hover:text-accent-600 transition-colors">About Us</a></li>
+                <li><a href="#" className="text-neutral-600 hover:text-accent-600 transition-colors">Our Team</a></li>
+                <li><a href="#" className="text-neutral-600 hover:text-accent-600 transition-colors">Careers</a></li>
+                <li><a href="#" className="text-neutral-600 hover:text-accent-600 transition-colors">Blog</a></li>
+                <li><a href="#" className="text-neutral-600 hover:text-accent-600 transition-colors">Contact</a></li>
               </ul>
             </div>
             
             <div>
               <h4 className="text-lg font-semibold mb-4">Contact Info</h4>
               <div className="space-y-2">
-                <p className="text-neutral-300">123 Renovation Ave</p>
-                <p className="text-neutral-300">Design City, DC 12345</p>
-                <p className="text-neutral-300">(555) 123-4567</p>
-                <p className="text-neutral-300">info@gsinterior.com</p>
+                <p className="text-neutral-600">123 Renovation Ave</p>
+                <p className="text-neutral-600">Design City, DC 12345</p>
+                <p className="text-neutral-600">(555) 123-4567</p>
+                <p className="text-neutral-600">info@gsinterior.com</p>
               </div>
             </div>
           </div>
           
-          <div className="border-t border-neutral-700 mt-12 pt-8 text-center">
-            <p className="text-neutral-400">&copy; 2024 GS Interior Renovation & Construction. All rights reserved.</p>
+          <div className="border-t border-neutral-400 mt-12 pt-8 text-center">
+            <p className="text-neutral-600">&copy; 2024 GS Interior Renovation & Construction. All rights reserved.</p>
           </div>
         </div>
       </footer>
@@ -489,8 +651,9 @@ const App = () => {
       <button
         onClick={openWhatsApp}
         className="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:scale-110 animate-float z-50"
+        aria-label="Chat with us on WhatsApp"
       >
-        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+        <svg className="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.097"/>
         </svg>
       </button>
